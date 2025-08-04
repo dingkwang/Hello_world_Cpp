@@ -7,8 +7,10 @@ int main() {
     float b = 2.0f;
     float c = a + b;
     
-    if (c == 3.0f) {
-        std::cout << "c is exactly 3.0f" << std::endl;
+    // Fix: Use epsilon-based comparison instead of exact equality
+    const float epsilon = 1e-6f;
+    if (std::abs(c - 3.0f) < epsilon) {
+        std::cout << "c is approximately 3.0f" << std::endl;
     }
     return 0;
 } 
