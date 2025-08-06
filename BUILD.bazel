@@ -1,5 +1,25 @@
+# Library containing the math utility functions
+cc_library(
+    name = "math_utils",
+    srcs = ["math_utils.cpp"],
+    hdrs = ["math_utils.h"],
+    visibility = ["//visibility:public"],
+)
+
+# Main binary target
 cc_binary(
     name = "hello_world",
     srcs = ["main.cpp"],
-    deps = [],
+    deps = [":math_utils"],
+)
+
+# Unit test target
+cc_test(
+    name = "test_math_utils",
+    srcs = ["test_math_utils.cpp"],
+    deps = [
+        ":math_utils",
+        "@googletest//:gtest",
+        "@googletest//:gtest_main",
+    ],
 ) 
